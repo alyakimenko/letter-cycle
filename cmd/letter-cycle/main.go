@@ -20,10 +20,7 @@ const (
 	height = 200
 )
 
-var (
-	transperency = 1.0
-	canvas       *svg.SVG // Main scetch area
-)
+var transperency = 1.0
 
 func init() {
 	// Seeds to generate random letters
@@ -34,21 +31,24 @@ func main() {
 	scetchWidth := width / 2
 	scetchHeight := height / 2
 
-	initCanvas(scetchWidth, scetchHeight)
-	drawLetters()
-	closeCanvas()
+	// Main scetch area
+	canvas := initCanvas(scetchWidth, scetchHeight)
+	drawLetters(canvas)
+	closeCanvas(canvas)
 }
 
 // Inits basic canvas, and define its draw area
-func initCanvas(scetchWidth, scetchHeight int) {
+func initCanvas(scetchWidth, scetchHeight int) *svg.SVG {
 	canvas := svg.New(os.Stdout)
 	canvas.Start(width, height)
 	canvas.Rect(0, 0, width, height)
 	canvas.Gstyle("font-family: serif; fill: white; font-size: 72pt")
 	canvas.Gtransform(fmt.Sprintf("translate(%d, %d)", scetchWidth, scetchHeight))
+
+	return canvas
 }
 
-func drawLetters() {
+func drawLetters(canvas *svg.SVG) {
 	character := getRandomChar()
 	for angel := 0.0; angel <= fullRotation; angel += rotationStep {
 		canvas.Text(0, 0, character,
@@ -63,7 +63,7 @@ func getRandomChar() string {
 	return string('a' + rand.Intn(letterNum))
 }
 
-func closeCanvas() {
+func closeCanvas(canvas *svg.SVG) {
 	canvas.Gend()
 	canvas.Gend()
 	canvas.End()
