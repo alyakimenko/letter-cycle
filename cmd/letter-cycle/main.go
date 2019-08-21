@@ -36,6 +36,7 @@ func main() {
 
 	initCanvas(scetchWidth, scetchHeight)
 	drawLetters()
+	closeCanvas()
 }
 
 // Inits basic canvas, and define its draw area
@@ -60,4 +61,10 @@ func drawLetters() {
 // Returns random character
 func getRandomChar() string {
 	return string('a' + rand.Intn(letterNum))
+}
+
+func closeCanvas() {
+	canvas.Gend()
+	canvas.Gend()
+	canvas.End()
 }
