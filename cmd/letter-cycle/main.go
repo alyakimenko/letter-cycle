@@ -12,9 +12,9 @@ import (
 const (
 	letterNum = 26
 
-	fullRotation = 360.0
-	rotationStep = 30.0 // The rotation angle
-	step         = .03  // Transparency step
+	fullRotation     = 360.0
+	rotationStep     = 30.0
+	transparencyStep = .03
 
 	width  = 200
 	height = 200
@@ -54,7 +54,7 @@ func drawLetters() {
 		canvas.Text(0, 0, character,
 			fmt.Sprintf(`transform="rotate(%.3f)"`, angel),
 			fmt.Sprintf(`fill-opacity="%.3f"`, transperency))
-		transperency -= step
+		transperency -= transparencyStep
 	}
 }
 
