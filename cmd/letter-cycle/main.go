@@ -13,7 +13,7 @@ const (
 	letterNum = 26
 
 	fullRotation = 360.0
-	rotation     = 30.0 // The rotation angle
+	rotationStep = 30.0 // The rotation angle
 	step         = .03  // Transparency step
 
 	width  = 200
@@ -35,6 +35,7 @@ func main() {
 	scetchHeight := height / 2
 
 	initCanvas(scetchWidth, scetchHeight)
+	drawLetters()
 }
 
 // Inits basic canvas, and define its draw area
@@ -44,6 +45,16 @@ func initCanvas(scetchWidth, scetchHeight int) {
 	canvas.Rect(0, 0, width, height)
 	canvas.Gstyle("font-family: serif; fill: white; font-size: 72pt")
 	canvas.Gtransform(fmt.Sprintf("translate(%d, %d)", scetchWidth, scetchHeight))
+}
+
+func drawLetters() {
+	character := getRandomChar()
+	for angel := 0.0; angel <= fullRotation; angel += rotationStep {
+		canvas.Text(0, 0, character,
+			fmt.Sprintf(`transform="rotate(%.3f)"`, angel),
+			fmt.Sprintf(`fill-opacity="%.3f"`, transperency))
+		transperency -= step
+	}
 }
 
 // Returns random character
