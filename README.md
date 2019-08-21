@@ -1,6 +1,6 @@
 ### letter-cycle
 
-generative letter orginized chaos.
+generative letters organized chaos.
 
 ![i 90 degrees](https://raw.githubusercontent.com/alyakimenko/letter-cycle/master/assets/i90d.png)
 ![s 30 degrees](https://raw.githubusercontent.com/alyakimenko/letter-cycle/master/assets/s30d.png)
