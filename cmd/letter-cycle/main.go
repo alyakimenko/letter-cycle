@@ -22,3 +22,11 @@ func init() {
 	// Seeds to generate random letters
 	rand.Seed(time.Now().UnixNano())
 }
+
+func main() {
+}
+
+// Returns random character
+func getRandomChar() string {
+	return string('a' + rand.Intn(letterNum))
+}
