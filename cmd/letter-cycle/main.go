@@ -13,18 +13,22 @@ const (
 	letterNum = 26
 
 	fullRotation     = 360.0
-	rotationStep     = 30.0
 	transparencyStep = .03
 
 	width  = 200
 	height = 200
 )
 
-var transperency = 1.0
+var (
+	transperency = 1.0
+	rotationStep float64
+)
 
 func init() {
 	// Seeds to generate random letters
 	rand.Seed(time.Now().UnixNano())
+
+	rotationStep = rand.Float64() * 90
 }
 
 func main() {
