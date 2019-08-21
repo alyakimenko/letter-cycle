@@ -1,5 +1,10 @@
 package main
 
+import (
+	"math/rand"
+	"time"
+)
+
 const (
 	letterNum = 26
 
@@ -12,3 +17,8 @@ const (
 )
 
 var transperency = 1.0
+
+func init() {
+	// Seeds to generate random letters
+	rand.Seed(time.Now().UnixNano())
+}
